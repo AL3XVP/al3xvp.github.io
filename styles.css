@@ -331,7 +331,10 @@ a{ color:inherit; text-decoration:none; }
 .tech-tags{ list-style:none; display:flex; flex-wrap:wrap; gap:9px; margin-bottom:24px; }
 .tech-tags li{ font-family:var(--font-mono); font-size:.78rem; color:var(--text);
   background:rgba(255,255,255,.04); border:1px solid var(--border); padding:6px 12px; border-radius:8px; }
-.project-links{ display:flex; gap:12px; }
+.project-status{ display:inline-flex; align-items:center; gap:9px; font-family:var(--font-mono);
+  font-size:.8rem; color:var(--muted); background:rgba(255,255,255,.04);
+  border:1px solid var(--border); padding:9px 15px; border-radius:10px; }
+.project-status svg{ color:var(--accent-2); flex:none; }
 
 /* ---------- contact ---------- */
 .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; }
