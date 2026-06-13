@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alexander Phan — Computer Science</title>
+<meta name="description" content="Alexander Phan — Bachelor of Science in Computer Science at UMass Boston. Full-stack developer building thoughtful, accessible web apps." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%237c5cff'/><text x='50' y='68' font-size='54' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>AP</text></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- decorative background layers -->
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-orb orb-1" aria-hidden="true"></div>
+<div class="bg-orb orb-2" aria-hidden="true"></div>
+<div class="bg-orb orb-3" aria-hidden="true"></div>
+<div class="cursor-glow" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+<a class="skip-link" href="#home">Skip to content</a>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="brand" aria-label="Home">
+      <span class="brand-mark">AP</span>
+      <span class="brand-text">Alexander Phan</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#home" class="nav-link active"><span class="nav-num">01</span> Home</a>
+      <a href="#about" class="nav-link"><span class="nav-num">02</span> About</a>
+      <a href="#work" class="nav-link"><span class="nav-num">03</span> Work</a>
+      <a href="#contact" class="nav-link"><span class="nav-num">04</span> Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-ghost nav-cta">Let's talk</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" class="m-link">Home</a>
+    <a href="#about" class="m-link">About</a>
+    <a href="#work" class="m-link">Work</a>
+    <a href="#contact" class="m-link">Contact</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== HOME / HERO ===================== -->
+<section id="home" class="hero">
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="hero-inner container">
+    <p class="hero-eyebrow reveal"><span class="ping"></span> Available for internships &amp; collaboration</p>
+    <h1 class="hero-name">
+      <span class="line"><span class="word">Alexander</span></span>
+      <span class="line"><span class="word grad">Phan</span></span>
+    </h1>
+    <p class="hero-role reveal" data-delay="200">
+      <span class="mono">&gt;</span> <span id="typewriter"></span><span class="caret">_</span>
+    </p>
+    <p class="hero-tag reveal" data-delay="350">
+      Computer Science student at UMass Boston who turns ideas into clean,
+      accessible web apps — from QR-based attendance systems to data-driven microsites.
+    </p>
+    <div class="hero-cta reveal" data-delay="500">
+      <a href="#work" class="btn btn-primary">View my work <span class="arrow">→</span></a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+    <div class="hero-socials reveal" data-delay="650">
+      <a href="mailto:aalexanderphan@gmail.com" class="social" aria-label="Email" title="Email">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4l-8 5L4 8V6l8 5 8-5z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/alexandervphan" target="_blank" rel="noopener" class="social" aria-label="LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V10.6H5.78v7.74h2.56zM7.06 9.43a1.49 1.49 0 1 0 0-2.98 1.49 1.49 0 0 0 0 2.98zm11.28 8.91v-4.24c0-2.27-1.21-3.32-2.83-3.32a2.44 2.44 0 0 0-2.21 1.21v-1.04h-2.56v7.74h2.56v-4.28c0-1.13.21-2.22 1.61-2.22s1.4 1.29 1.4 2.29v4.21h2.56z"/></svg>
+      </a>
+      <a href="tel:6179612341" class="social" aria-label="Phone" title="Phone">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.57 1 1 0 0 1-.25 1l-2.2 2.22z"/></svg>
+      </a>
+    </div>
+  </div>
+  <a href="#about" class="scroll-hint" aria-label="Scroll to About">
+    <span class="mouse"><span class="wheel"></span></span>
+    <span class="scroll-label">Scroll</span>
+  </a>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about" class="section">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">About <span class="grad">me</span></h2>
+      <div class="section-rule"></div>
+    </header>
+
+    <div class="about-grid">
+      <div class="about-bio reveal">
+        <p>
+          My name is <strong>Alexander Phan</strong>, and I'm pursuing a
+          <strong>Bachelor of Science in Computer Science</strong> at the
+          University of Massachusetts Boston.
+        </p>
+        <p>
+          I like building software that people actually reach for — tools that feel
+          fast, look clean, and hold up under real use. My coursework runs deep on
+          fundamentals (data structures, computer architecture, compilers, operating
+          systems), and outside the classroom I ship full-stack web apps with
+          Next.js, React, and TypeScript.
+        </p>
+        <p>
+          I care about the details others skip: accessibility, security, and the
+          small interactions that make an interface feel considered. When I'm not
+          coding, I'm usually designing, mentoring, or figuring out how to make a
+          messy process a little simpler.
+        </p>
+
+        <div class="edu-card">
+          <div class="edu-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v3.4L12 20l7-3.42v-3.4L12 17l-7-3.82z"/></svg>
+          </div>
+          <div>
+            <h3>University of Massachusetts Boston</h3>
+            <p class="edu-sub">B.S. Computer Science · GPA 3.3 · Expected May 2027</p>
+            <p class="edu-course">Advanced Data Structures &amp; Algorithms · Computer Architecture · Compilers · Operating Systems · Discrete Math · Linear Algebra</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- code-card "about" object -->
+      <div class="about-code reveal" data-delay="150">
+        <div class="code-window">
+          <div class="code-bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="code-file">developer.ts</span>
+          </div>
+          <pre class="code-body"><code><span class="c-key">const</span> <span class="c-var">alexander</span> <span class="c-op">=</span> {
+  <span class="c-prop">name</span>: <span class="c-str">'Alexander Phan'</span>,
+  <span class="c-prop">role</span>: <span class="c-str">'CS Student &amp; Developer'</span>,
+  <span class="c-prop">school</span>: <span class="c-str">'UMass Boston'</span>,
+  <span class="c-prop">based</span>: <span class="c-str">'Cambridge, MA'</span>,
+  <span class="c-prop">languages</span>: [<span class="c-str">'EN'</span>, <span class="c-str">'VI'</span>],
+  <span class="c-prop">focus</span>: [
+    <span class="c-str">'full-stack web'</span>,
+    <span class="c-str">'clean UX'</span>,
+    <span class="c-str">'accessibility'</span>,
+  ],
+  <span class="c-prop">currentlyLearning</span>: <span class="c-fn">true</span>,
+  <span class="c-prop">openToWork</span>: <span class="c-fn">true</span>,
+};</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- stats -->
+    <div class="stats reveal" data-stagger>
+      <div class="stat">
+        <span class="stat-num" data-count="3.3" data-decimals="1">0</span>
+        <span class="stat-label">GPA</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="2027">0</span>
+        <span class="stat-label">Expected Grad</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="8" data-suffix="+">0</span>
+        <span class="stat-label">Languages</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="2">0</span>
+        <span class="stat-label">Featured Projects</span>
+      </div>
+    </div>
+
+    <!-- skills -->
+    <div class="skills-head reveal">
+      <h3>Tech I build with</h3>
+      <p>Languages, frameworks, and tools I reach for most.</p>
+    </div>
+    <div class="skills-grid reveal" data-stagger>
+      <div class="skill"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+      <div class="skill"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+      <div class="skill"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+      <div class="skill"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+      <div class="skill"><i class="devicon-react-original colored"></i><span>React</span></div>
+      <div class="skill" data-mono><i class="devicon-nextjs-plain"></i><span>Next.js</span></div>
+      <div class="skill"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+      <div class="skill"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></div>
+      <div class="skill"><i class="devicon-c-plain colored"></i><span>C</span></div>
+      <div class="skill"><i class="devicon-cplusplus-plain colored"></i><span>C++</span></div>
+      <div class="skill"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
+      <div class="skill"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+      <div class="skill"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+      <div class="skill"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+      <div class="skill" data-mono><i class="devicon-github-original"></i><span>GitHub</span></div>
+      <div class="skill"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WORK ===================== -->
+<section id="work" class="section">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Featured <span class="grad">work</span></h2>
+      <div class="section-rule"></div>
+    </header>
+
+    <!-- PROJECT 1: SSS Web -->
+    <article class="project reveal">
+      <div class="project-preview">
+        <div class="browser">
+          <div class="browser-bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="browser-url">sss.umb.edu</span>
+          </div>
+          <div class="browser-body mock-sss">
+            <div class="m-nav"><span class="m-logo">SSS</span><span class="m-pill"></span><span class="m-pill"></span><span class="m-pill"></span><span class="m-btn">Apply</span></div>
+            <div class="m-hero">
+              <div class="m-h-line w70"></div>
+              <div class="m-h-line w90 dim"></div>
+              <div class="m-h-line w40 dim"></div>
+            </div>
+            <div class="m-cards">
+              <div class="m-card"></div><div class="m-card"></div><div class="m-card"></div>
+            </div>
+            <div class="m-stats">
+              <div class="m-stat"><b>500+</b><i></i></div>
+              <div class="m-stat"><b>12</b><i></i></div>
+              <div class="m-stat"><b>98%</b><i></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <span class="project-kicker">Featured Project</span>
+        <h3 class="project-title">SSS Web — Student Support Services Microsite</h3>
+        <p class="project-desc">
+          A modern, fully responsive microsite for a university Student Support
+          Services program, inspired by the UMass Boston SSS page. Built data-first:
+          all content — services, eligibility, staff, hours, FAQ — lives in typed
+          config files, so the site can be updated without touching a single
+          component.
+        </p>
+        <ul class="project-feats">
+          <li>Data-driven architecture — edit content in <code>/data/*.ts</code>, no code changes</li>
+          <li>Accessibility-first: semantic landmarks, skip links, visible focus, keyboard FAQ</li>
+          <li>Mobile-first responsive layout with a custom "beacon-blue" design system</li>
+        </ul>
+        <ul class="tech-tags">
+          <li>Next.js 14</li><li>React 18</li><li>TypeScript</li><li>Tailwind CSS</li>
+        </ul>
+        <div class="project-links">
+          <a href="#" class="btn btn-primary btn-sm">Live Demo <span class="arrow">→</span></a>
+          <a href="#" class="btn btn-ghost btn-sm">Source</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 2: Attendance App -->
+    <article class="project project-reverse reveal">
+      <div class="project-preview">
+        <div class="browser">
+          <div class="browser-bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="browser-url">attendance.app/dashboard</span>
+          </div>
+          <div class="browser-body mock-att">
+            <div class="att-top">
+              <span class="att-title">Live Attendance</span>
+              <span class="att-tabs"><i class="on">1124</i><i>1117</i></span>
+            </div>
+            <div class="att-main">
+              <div class="att-qr" id="mockQr" aria-hidden="true"></div>
+              <div class="att-list">
+                <div class="att-row"><span class="att-name"></span><span class="badge ok">Present</span></div>
+                <div class="att-row"><span class="att-name"></span><span class="badge ok">Present</span></div>
+                <div class="att-row"><span class="att-name"></span><span class="badge warn">Tardy</span></div>
+                <div class="att-row"><span class="att-name"></span><span class="badge ok">Present</span></div>
+                <div class="att-row"><span class="att-name"></span><span class="badge bad">Absent</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <span class="project-kicker">Featured Project</span>
+        <h3 class="project-title">Attendance App — QR Classroom Check-In</h3>
+        <p class="project-desc">
+          A QR-based classroom attendance system for instructors. Students scan a
+          rotating code to check in; the dashboard scores Present / Tardy / Absent
+          automatically from time-since-start, supports multiple class sections, and
+          exports clean rosters and summaries to CSV or Excel.
+        </p>
+        <ul class="project-feats">
+          <li>Security-first: constant-time login, signed httpOnly sessions, rate limiting</li>
+          <li>Student PII (email &amp; phone) <strong>encrypted at rest</strong> and masked in the UI</li>
+          <li>libSQL/Turso in production, auto on-disk SQLite for local dev; CSV/Excel exports</li>
+        </ul>
+        <ul class="tech-tags">
+          <li>Next.js 15</li><li>React 19</li><li>libSQL / Turso</li><li>ExcelJS</li><li>Tailwind CSS</li>
+        </ul>
+        <div class="project-links">
+          <a href="#" class="btn btn-primary btn-sm">Live Demo <span class="arrow">→</span></a>
+          <a href="#" class="btn btn-ghost btn-sm">Source</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="section">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Get in <span class="grad">touch</span></h2>
+      <div class="section-rule"></div>
+    </header>
+
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <h3 class="contact-lead">Let's build something together.</h3>
+        <p class="contact-copy">
+          I'm always open to internships, project collaborations, or just a good
+          conversation about software. Drop a message and I'll get back to you.
+        </p>
+        <div class="contact-methods reveal" data-stagger>
+          <button class="contact-card" data-copy="aalexanderphan@gmail.com">
+            <span class="cc-icon"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4l-8 5L4 8V6l8 5 8-5z"/></svg></span>
+            <span class="cc-text"><b>Email</b><span>aalexanderphan@gmail.com</span></span>
+            <span class="cc-action">Copy</span>
+          </button>
+          <button class="contact-card" data-copy="617-961-2341">
+            <span class="cc-icon"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.57 1 1 0 0 1-.25 1l-2.2 2.22z"/></svg></span>
+            <span class="cc-text"><b>Phone</b><span>617-961-2341</span></span>
+            <span class="cc-action">Copy</span>
+          </button>
+          <a class="contact-card" href="https://linkedin.com/in/alexandervphan" target="_blank" rel="noopener">
+            <span class="cc-icon"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V10.6H5.78v7.74h2.56zM7.06 9.43a1.49 1.49 0 1 0 0-2.98 1.49 1.49 0 0 0 0 2.98zm11.28 8.91v-4.24c0-2.27-1.21-3.32-2.83-3.32a2.44 2.44 0 0 0-2.21 1.21v-1.04h-2.56v7.74h2.56v-4.28c0-1.13.21-2.22 1.61-2.22s1.4 1.29 1.4 2.29v4.21h2.56z"/></svg></span>
+            <span class="cc-text"><b>LinkedIn</b><span>/in/alexandervphan</span></span>
+            <span class="cc-action">Open ↗</span>
+          </a>
+          <div class="contact-card static">
+            <span class="cc-icon"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
+            <span class="cc-text"><b>Location</b><span>Cambridge, MA</span></span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" data-delay="150" id="contactForm">
+        <div class="field">
+          <input type="text" id="cf-name" name="name" required placeholder=" " />
+          <label for="cf-name">Your name</label>
+        </div>
+        <div class="field">
+          <input type="email" id="cf-email" name="email" required placeholder=" " />
+          <label for="cf-email">Your email</label>
+        </div>
+        <div class="field">
+          <textarea id="cf-msg" name="message" rows="5" required placeholder=" "></textarea>
+          <label for="cf-msg">Message</label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send message <span class="arrow">→</span></button>
+        <p class="form-note">Opens your email app, pre-addressed to me.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="#home" class="brand">
+      <span class="brand-mark">AP</span>
+      <span class="brand-text">Alexander Phan</span>
+    </a>
+    <p class="footer-note">Designed &amp; built by Alexander Phan · <span id="year"></span></p>
+    <a href="#home" class="to-top" aria-label="Back to top">↑ Top</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
