@@ -5,6 +5,11 @@
   'use strict';
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- always start at the top on load/refresh ---------- */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+  window.addEventListener('load', () => window.scrollTo(0, 0));
+
   /* ---------- year ---------- */
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -51,25 +56,18 @@
     })();
   }
 
-  /* ---------- typewriter ---------- */
-  const roles = [
-    'Computer Science Student',
-    'Full-Stack Developer',
-    'Next.js & React Builder',
-    'Problem Solver',
-  ];
+  /* ---------- title (types once, then holds) ---------- */
+  const title = 'Full-Stack Developer';
   const twEl = document.getElementById('typewriter');
-  if (twEl) {
-    let r = 0, c = 0, deleting = false;
+  if (twEl && !prefersReduced) {
+    let c = 0;
     const tick = () => {
-      const word = roles[r];
-      twEl.textContent = word.slice(0, c);
-      if (!deleting && c < word.length) { c++; setTimeout(tick, 70); }
-      else if (!deleting && c === word.length) { deleting = true; setTimeout(tick, 1500); }
-      else if (deleting && c > 0) { c--; setTimeout(tick, 35); }
-      else { deleting = false; r = (r + 1) % roles.length; setTimeout(tick, 350); }
+      twEl.textContent = title.slice(0, c);
+      if (c < title.length) { c++; setTimeout(tick, 75); }
     };
     tick();
+  } else if (twEl) {
+    twEl.textContent = title;
   }
 
   /* ---------- reveal on scroll + stagger (replays on every entry) ---------- */
