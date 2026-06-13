@@ -72,33 +72,45 @@
     tick();
   }
 
-  /* ---------- reveal on scroll + stagger ---------- */
-  document.querySelectorAll('[data-stagger]').forEach((group) => {
+  /* ---------- reveal on scroll + stagger (replays on every entry) ---------- */
+  function setStagger(group, show) {
     Array.from(group.children).forEach((child, i) => {
       child.style.transition = 'opacity .7s var(--ease), transform .7s var(--ease)';
-      child.style.transitionDelay = (i * 0.06) + 's';
-      child.style.opacity = '0';
-      child.style.transform = 'translateY(28px)';
+      child.style.transitionDelay = show ? (i * 0.06) + 's' : '0s';
+      child.style.opacity = show ? '1' : '0';
+      child.style.transform = show ? 'none' : 'translateY(28px)';
     });
-  });
+  }
+  function showReveal(el) {
+    const delay = parseInt(el.dataset.delay || '0', 10);
+    el.style.transitionDelay = (delay / 1000) + 's';
+    el.classList.add('in-view');
+    if (el.hasAttribute('data-stagger')) setStagger(el, true);
+    if (el.querySelector && el.querySelector('[data-count]')) startCounters(el);
+  }
+  function hideReveal(el) {
+    el.classList.remove('in-view');
+    el.style.transitionDelay = '0s';
+    if (el.hasAttribute('data-stagger')) setStagger(el, false);
+  }
 
-  const revealObserver = new IntersectionObserver((entries, obs) => {
+  document.querySelectorAll('[data-stagger]').forEach((g) => setStagger(g, false));
+
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const delay = parseInt(el.dataset.delay || '0', 10);
-      setTimeout(() => {
-        el.classList.add('in-view');
-        if (el.hasAttribute('data-stagger')) {
-          Array.from(el.children).forEach((c) => { c.style.opacity = '1'; c.style.transform = 'none'; });
-        }
-        if (el.querySelector && el.querySelector('[data-count]')) startCounters(el);
-      }, delay);
-      obs.unobserve(el);
+      if (entry.isIntersecting) showReveal(entry.target);
+      else hideReveal(entry.target);
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+  // Replay every reveal inside a container — used by the page-transition curtain.
+  function playReveals(scope) {
+    const els = Array.from(scope.querySelectorAll('.reveal'));
+    els.forEach(hideReveal);
+    requestAnimationFrame(() => requestAnimationFrame(() => els.forEach(showReveal)));
+  }
 
   /* ---------- animated counters ---------- */
   function startCounters(scope) {
@@ -135,6 +147,63 @@
     });
   }, { threshold: 0.5 });
   sections.forEach((s) => spy.observe(s));
+
+  /* ---------- page-transition curtain on in-page navigation ---------- */
+  (function pageTransitions() {
+    const curtain = document.querySelector('.page-curtain');
+    const label = curtain && curtain.querySelector('.curtain-label');
+    const NAV_H = 66;
+    const labels = { home: 'Home', about: 'About', work: 'Work', contact: 'Contact' };
+
+    function jump(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const top = id === 'home' ? 0 : el.getBoundingClientRect().top + window.scrollY - NAV_H;
+      window.scrollTo({ top, behavior: 'instant' });
+      playReveals(el);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const id = link.getAttribute('href').slice(1);
+        const target = id && document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        // close the mobile menu if it's open
+        const mm = document.getElementById('mobileMenu');
+        if (mm) mm.classList.remove('open');
+        const hb = document.getElementById('hamburger');
+        if (hb) hb.setAttribute('aria-expanded', 'false');
+
+        if (prefersReduced || !curtain) { jump(id); return; }
+        if (label) label.textContent = labels[id] || '';
+        curtain.classList.remove('run');
+        void curtain.offsetWidth;          // restart the animation
+        curtain.classList.add('run');
+        setTimeout(() => jump(id), 460);    // jump while the screen is covered
+        setTimeout(() => curtain.classList.remove('run'), 1080);
+      });
+    });
+  })();
+
+  /* ---------- interactive tilt on project mockups ---------- */
+  if (!prefersReduced && window.matchMedia('(pointer:fine)').matches) {
+    document.querySelectorAll('.project-preview').forEach((wrap) => {
+      const card = wrap.querySelector('.browser');
+      if (!card) return;
+      wrap.addEventListener('mousemove', (e) => {
+        const r = wrap.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transition = 'transform .12s linear';
+        card.style.transform = `rotateY(${px * 14}deg) rotateX(${-py * 10}deg) translateY(-6px)`;
+      });
+      wrap.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform .6s var(--ease)';
+        card.style.transform = '';
+      });
+    });
+  }
 
   /* ---------- build pseudo-QR for the attendance mock ---------- */
   (function buildQr() {

@@ -84,6 +84,27 @@ a{ color:inherit; text-decoration:none; }
 .scroll-progress span{ display:block; height:100%; width:0; background:var(--grad);
   box-shadow:0 0 12px rgba(255,122,24,.7); }
 
+/* ---------- page transition curtain ---------- */
+.page-curtain{ position:fixed; inset:0; z-index:300; pointer-events:none;
+  display:grid; place-items:center; transform:translateY(100%);
+  background:linear-gradient(120deg,#f7411e,#ff7a18,#ffc223); }
+.page-curtain.run{ animation:curtain 1.05s var(--ease) forwards; }
+@keyframes curtain{
+  0%{ transform:translateY(100%); }
+  42%{ transform:translateY(0); }
+  58%{ transform:translateY(0); }
+  100%{ transform:translateY(-100%); }
+}
+.curtain-label{ font-family:var(--font-head); font-weight:700; letter-spacing:-.02em;
+  font-size:clamp(2.4rem,9vw,6rem); color:#2a1106; opacity:0; }
+.page-curtain.run .curtain-label{ animation:curtainLabel 1.05s var(--ease) forwards; }
+@keyframes curtainLabel{
+  0%{ opacity:0; transform:translateY(28px) scale(.96); }
+  42%{ opacity:1; transform:none; }
+  58%{ opacity:1; transform:none; }
+  100%{ opacity:0; transform:translateY(-22px) scale(1.04); }
+}
+
 /* ---------- skip link ---------- */
 .skip-link{ position:fixed; top:-60px; left:16px; z-index:300; background:var(--accent);
   color:#fff; padding:10px 16px; border-radius:8px; transition:top .25s; }
@@ -175,7 +196,10 @@ a{ color:inherit; text-decoration:none; }
   animation:rise .9s var(--ease) forwards; }
 .hero-name .line:nth-child(2) .word{ animation-delay:.12s; }
 @keyframes rise{ to{ transform:translateY(0);} }
-.grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.grad{ background:linear-gradient(100deg, #f7411e, #ff7a18, #ffc223, #ff7a18, #f7411e);
+  background-size:220% auto; -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:shimmer 7s linear infinite; }
+@keyframes shimmer{ to{ background-position:220% center; } }
 
 .hero-role{ font-family:var(--font-mono); font-size:clamp(1rem,2.6vw,1.5rem); color:var(--text);
   min-height:1.6em; margin-bottom:18px; }

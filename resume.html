@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Alexander Phan — Resume</title>
+<style>
+  @page { size: Letter; margin: 0.5in 0.55in; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #1f1f1f; font-size: 10.3pt; line-height: 1.34;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .name {
+    text-align: center; font-size: 22pt; font-weight: 700;
+    letter-spacing: 3px; color: #1a1a1a;
+  }
+  .contact {
+    text-align: center; font-size: 9.4pt; color: #444; margin-top: 4px;
+  }
+  .contact a { color: #1a1a1a; text-decoration: none; }
+  .sep { color: #c2410c; margin: 0 6px; }
+
+  .section-title {
+    font-size: 11pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; color: #9a3412;
+    border-bottom: 1.5px solid #e7b48f; padding-bottom: 2px;
+    margin: 13px 0 6px;
+  }
+
+  .entry { margin-bottom: 9px; }
+  .entry-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .entry-org { font-weight: 700; font-size: 10.6pt; }
+  .entry-right { font-size: 9.4pt; color: #555; }
+  .entry-sub { display: flex; justify-content: space-between; align-items: baseline; margin-top: 1px; }
+  .entry-role { font-style: italic; color: #333; }
+  .entry-date { font-style: italic; color: #555; font-size: 9.4pt; }
+  .tech { color: #9a3412; font-weight: 600; font-size: 9.3pt; }
+
+  ul { margin: 4px 0 0; padding-left: 17px; }
+  li { margin-bottom: 2.5px; }
+  li::marker { color: #c2410c; }
+
+  .skills-line { margin-bottom: 3px; }
+  .skills-line b { color: #1a1a1a; }
+</style>
+</head>
+<body>
+
+  <div class="name">ALEXANDER PHAN</div>
+  <div class="contact">
+    Cambridge, MA <span class="sep">|</span>
+    <a href="mailto:aalexanderphan@gmail.com">aalexanderphan@gmail.com</a> <span class="sep">|</span>
+    <a href="https://linkedin.com/in/alexandervphan">linkedin.com/in/alexandervphan</a> <span class="sep">|</span>
+    <a href="https://github.com/AL3XVP">github.com/AL3XVP</a>
+  </div>
+
+  <div class="section-title">Education</div>
+  <div class="entry">
+    <div class="entry-head">
+      <span class="entry-org">University of Massachusetts Boston</span>
+      <span class="entry-right">Boston, MA</span>
+    </div>
+    <div class="entry-sub">
+      <span class="entry-role">Bachelor of Science in Computer Science &nbsp;|&nbsp; GPA: 3.3</span>
+      <span class="entry-date">Expected May 2027</span>
+    </div>
+    <ul>
+      <li>Relevant Coursework: Advanced Data Structures &amp; Algorithms, Computer Architecture &amp; Organization, Compilers, Operating Systems, Discrete Mathematics, Linear Algebra</li>
+      <li>Honors &amp; Programs: TRIO Student Support Services; Undergraduate Leadership Council (SEAS)</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Technical Skills</div>
+  <div class="entry">
+    <div class="skills-line"><b>Languages:</b> Python, Java, JavaScript, TypeScript, C, C++, C#, HTML/CSS</div>
+    <div class="skills-line"><b>Frameworks &amp; Tools:</b> Next.js, React, Node.js, Git/GitHub, Vercel, VS Code, Xcode, Claude Code</div>
+    <div class="skills-line"><b>Design &amp; Media:</b> Canva, DaVinci Resolve, Adobe Creative Suite (basic), Notion, Obsidian</div>
+    <div class="skills-line"><b>Spoken Languages:</b> English (fluent), Vietnamese (native)</div>
+  </div>
+
+  <div class="section-title">Projects</div>
+  <div class="entry">
+    <div class="entry-head">
+      <span class="entry-org">Class Attendance App</span>
+      <span class="tech">Next.js · React · libSQL / Turso · Vercel</span>
+    </div>
+    <ul>
+      <li>Built a QR-based classroom attendance web app where students check in by scanning a rotating code, with a dashboard that automatically marks each student Present, Tardy, or Absent based on their check-in time.</li>
+      <li>Added support for multiple class sections, live attendance tracking with manual overrides, and one-click roster and attendance exports to CSV and Excel.</li>
+      <li>Deployed to Vercel backed by a hosted Turso database, with an automatic local SQLite fallback for development.</li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="entry-head">
+      <span class="entry-org">SSS Web — Student Support Services Microsite</span>
+      <span class="tech">Next.js · React · TypeScript · Tailwind CSS</span>
+    </div>
+    <ul>
+      <li>Developed a responsive, data-driven microsite where all content — services, staff, office hours, and FAQs — lives in typed configuration files, letting non-developers update the site without touching code.</li>
+      <li>Built with semantic, accessible HTML (landmarks, skip links, keyboard-friendly components) and a custom, reusable design system.</li>
+    </ul>
+  </div>
+
+  <div class="section-title">Professional Experience</div>
+  <div class="entry">
+    <div class="entry-head">
+      <span class="entry-org">Pathways &amp; Multilingual Programs (PMP) and Student Success Programs (SSS)</span>
+      <span class="entry-right">Boston, MA</span>
+    </div>
+    <div class="entry-sub">
+      <span class="entry-role">Social Media &amp; Event Coordinator</span>
+      <span class="entry-date">January 2025 – Present</span>
+    </div>
+    <ul>
+      <li>Lead content strategy for SSS Instagram, producing weekly posts and stories that grew engagement among target student populations across PMP, ELP, and ISAP programs.</li>
+      <li>Analyze Instagram insights weekly to identify top-performing content formats, refining strategy to increase reach and follower retention.</li>
+      <li>Design flyers, postcards, and digital assets in Canva for 10+ campus events per semester, coordinating with program coordinators on messaging and visual identity.</li>
+      <li>Plan and execute on-site logistics for student events serving the SSS, ELP, and ISAP communities.</li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="entry-head">
+      <span class="entry-org">Directions for Student Potential (DSP)</span>
+      <span class="entry-right">Boston, MA</span>
+    </div>
+    <div class="entry-sub">
+      <span class="entry-role">Social Media &amp; Event Coordinator</span>
+      <span class="entry-date">June 2025 – July 2025</span>
+    </div>
+    <ul>
+      <li>Produced and distributed promotional flyers across digital and physical channels to drive program attendance during the summer cohort.</li>
+      <li>Managed event-day logistics including inventory, A/V setup, and on-site participant communication.</li>
+      <li>Captured event photography and short-form content used in post-event recaps and recruitment for the following cycle.</li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="entry-head">
+      <span class="entry-org">Student Success Programs (SSS)</span>
+      <span class="entry-right">Boston, MA</span>
+    </div>
+    <div class="entry-sub">
+      <span class="entry-role">Administrative Assistant</span>
+      <span class="entry-date">November 2023 – February 2025</span>
+    </div>
+    <ul>
+      <li>Triaged 20+ weekly student inquiries, connecting students with academic advisors and campus resources based on individual needs.</li>
+      <li>Built a streamlined intake and routing process that reduced response time and improved communication between students, staff, and faculty.</li>
+      <li>Maintained working knowledge of campus-wide resources to deliver accurate, timely referrals across academic, financial, and personal support areas.</li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="entry-head">
+      <span class="entry-org">Student Success Programs (SSS)</span>
+      <span class="entry-right">Boston, MA</span>
+    </div>
+    <div class="entry-sub">
+      <span class="entry-role">Peer Mentor</span>
+      <span class="entry-date">September 2024 – December 2024</span>
+    </div>
+    <ul>
+      <li>Mentored incoming first-year students on navigating coursework, campus resources, and college-level study habits through one-on-one sessions.</li>
+      <li>Led targeted communication coaching to help mentees build public speaking and self-advocacy skills for academic and professional settings.</li>
+      <li>Completed structured mentor training workshops to strengthen support practices and reflect on mentoring outcomes.</li>
+    </ul>
+  </div>
+
+</body>
+</html>
