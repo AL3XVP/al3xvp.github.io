@@ -163,50 +163,60 @@
     }
   })();
 
-  /* ---------- particle network (hero) ---------- */
-  (function particles() {
+  /* ---------- rising embers (hero) ---------- */
+  (function embers() {
     const canvas = document.getElementById('particles');
     if (!canvas || prefersReduced) return;
     const ctx = canvas.getContext('2d');
     let w, h, pts, raf;
-    const COUNT = () => Math.min(70, Math.floor(window.innerWidth / 20));
+    const palette = ['255,106,61', '255,160,40', '247,65,30', '255,200,61'];
+    const COUNT = () => Math.min(64, Math.floor(window.innerWidth / 22));
 
     function resize() {
       const hero = canvas.parentElement;
       w = canvas.width = hero.offsetWidth;
       h = canvas.height = hero.offsetHeight;
     }
+    function spawn() {
+      return {
+        x: Math.random() * w,
+        y: h + Math.random() * 40,
+        r: Math.random() * 1.8 + 0.8,
+        vy: -(Math.random() * 0.5 + 0.18),
+        phase: Math.random() * Math.PI * 2,
+        flick: Math.random() * 0.03 + 0.012,
+        sway: Math.random() * 0.4 + 0.15,
+        color: palette[(Math.random() * palette.length) | 0],
+        alpha: Math.random() * 0.45 + 0.3,
+      };
+    }
     function init() {
       resize();
-      pts = Array.from({ length: COUNT() }, () => ({
-        x: Math.random() * w, y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.45, vy: (Math.random() - 0.5) * 0.45,
-      }));
+      pts = Array.from({ length: COUNT() }, () => {
+        const p = spawn();
+        p.y = Math.random() * h; // spread across the hero on first frame
+        return p;
+      });
     }
     function draw() {
       ctx.clearRect(0, 0, w, h);
-      for (let i = 0; i < pts.length; i++) {
-        const p = pts[i];
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > w) p.vx *= -1;
-        if (p.y < 0 || p.y > h) p.vy *= -1;
+      ctx.globalCompositeOperation = 'lighter';
+      for (const p of pts) {
+        p.y += p.vy;
+        p.phase += p.flick;
+        p.x += Math.sin(p.phase) * p.sway;
+        const a = p.alpha * (0.55 + 0.45 * Math.sin(p.phase * 2));
+        const rad = p.r * 4;
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, rad);
+        g.addColorStop(0, `rgba(${p.color},${a})`);
+        g.addColorStop(1, `rgba(${p.color},0)`);
+        ctx.fillStyle = g;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(124,92,255,.65)';
+        ctx.arc(p.x, p.y, rad, 0, Math.PI * 2);
         ctx.fill();
-        for (let j = i + 1; j < pts.length; j++) {
-          const q = pts[j];
-          const dx = p.x - q.x, dy = p.y - q.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < 130) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(124,92,255,${0.16 * (1 - dist / 130)})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        }
+        if (p.y < -12) Object.assign(p, spawn());
       }
+      ctx.globalCompositeOperation = 'source-over';
       raf = requestAnimationFrame(draw);
     }
     init();
