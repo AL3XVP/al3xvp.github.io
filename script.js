@@ -56,18 +56,25 @@
     })();
   }
 
-  /* ---------- title (types once, then holds) ---------- */
-  const title = 'Full-Stack Developer';
-  const twEl = document.getElementById('typewriter');
-  if (twEl && !prefersReduced) {
+  /* ---------- title (types once, then holds) — started after the intro ---------- */
+  function startTitle() {
+    const title = 'Full-Stack Developer';
+    const twEl = document.getElementById('typewriter');
+    if (!twEl) return;
+    if (prefersReduced) { twEl.textContent = title; return; }
     let c = 0;
     const tick = () => {
       twEl.textContent = title.slice(0, c);
       if (c < title.length) { c++; setTimeout(tick, 75); }
     };
     tick();
-  } else if (twEl) {
-    twEl.textContent = title;
+  }
+
+  // Kick off the hero once the intro clears (or immediately if there's no intro).
+  function startSite() {
+    startTitle();
+    const home = document.getElementById('home');
+    if (home) playReveals(home);
   }
 
   /* ---------- reveal on scroll + stagger (replays on every entry) ---------- */
@@ -203,6 +210,55 @@
     });
   }
 
+  /* ---------- cursor spotlight on cards ---------- */
+  if (!prefersReduced && window.matchMedia('(pointer:fine)').matches) {
+    document.querySelectorAll('.skill, .stat, .contact-card, .edu-card').forEach((card) => {
+      card.classList.add('spotlight');
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+
+  /* ---------- magnetic buttons ---------- */
+  if (!prefersReduced && window.matchMedia('(pointer:fine)').matches) {
+    document.querySelectorAll('.btn').forEach((btn) => {
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * 0.3;
+        const y = (e.clientY - r.top - r.height / 2) * 0.45;
+        btn.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+  /* ---------- scroll-reactive hero (parallax + zoom-out) ---------- */
+  const heroInner = document.querySelector('.hero-inner');
+  const heroCanvas = document.getElementById('particles');
+  const scrollHint = document.querySelector('.scroll-hint');
+  if (heroInner && !prefersReduced) {
+    let ticking = false;
+    const updateHero = () => {
+      const y = window.scrollY;
+      const vh = window.innerHeight || 1;
+      if (y <= vh) {
+        const p = y / vh;
+        heroInner.style.transform = `translateY(${y * 0.3}px) scale(${1 - p * 0.08})`;
+        heroInner.style.opacity = String(Math.max(0, 1 - p * 1.35));
+        if (heroCanvas) heroCanvas.style.transform = `translateY(${y * 0.5}px)`;
+        if (scrollHint) scrollHint.style.opacity = String(Math.max(0, 1 - p * 3));
+      }
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(updateHero); }
+    }, { passive: true });
+    updateHero();
+  }
+
   /* ---------- build pseudo-QR for the attendance mock ---------- */
   (function buildQr() {
     const qr = document.getElementById('mockQr');
@@ -334,4 +390,23 @@
       form.reset();
     });
   }
+
+  /* ---------- intro / preloader ---------- */
+  (function intro() {
+    const el = document.getElementById('intro');
+    if (!el) { startSite(); return; }
+    if (prefersReduced) { el.remove(); startSite(); return; }
+    document.body.style.overflow = 'hidden';
+    const finish = () => {
+      if (el.dataset.gone) return;
+      el.dataset.gone = '1';
+      el.classList.add('done');
+      document.body.style.overflow = '';
+      window.scrollTo(0, 0);
+      startSite();
+      setTimeout(() => el.remove(), 1100);
+    };
+    setTimeout(finish, 2000);   // after the intro animations play
+    setTimeout(finish, 4500);   // failsafe if anything stalls
+  })();
 })();
