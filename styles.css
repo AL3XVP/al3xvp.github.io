@@ -273,6 +273,13 @@ a{ color:inherit; text-decoration:none; }
 .skills-head{ text-align:center; margin-bottom:34px; }
 .skills-head h3{ font-family:var(--font-head); font-size:1.7rem; }
 .skills-head p{ color:var(--muted); margin-top:6px; }
+.skills-group{ margin-bottom:38px; }
+.skills-group:last-child{ margin-bottom:0; }
+.skills-tier{ display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 12px; margin-bottom:18px; }
+.skills-tier-name{ font-family:var(--font-head); font-weight:600; font-size:1.05rem;
+  color:var(--text); padding-bottom:4px; border-bottom:2px solid transparent;
+  border-image:var(--grad) 1; }
+.skills-tier-note{ color:var(--muted); font-size:.85rem; font-family:var(--font-mono); }
 .skills-grid{ display:grid; grid-template-columns:repeat(8,1fr); gap:16px; }
 .skill{ display:flex; flex-direction:column; align-items:center; gap:10px; padding:20px 8px;
   border-radius:16px; background:var(--surface); border:1px solid var(--border);
@@ -282,6 +289,17 @@ a{ color:inherit; text-decoration:none; }
 .skill span{ font-size:.78rem; color:var(--muted); font-family:var(--font-mono); }
 .skill:hover{ transform:translateY(-8px); border-color:var(--border-2); background:var(--surface-2); }
 .skill:hover i{ transform:scale(1.18) rotate(-6deg); }
+
+/* AI toolkit — leveraged tools, styled as pills to read as a distinct category */
+.ai-tools{ display:flex; flex-wrap:wrap; gap:12px; }
+.ai-tool{ display:inline-flex; align-items:center; gap:9px; padding:11px 18px;
+  border-radius:999px; background:var(--surface); border:1px solid var(--border);
+  font-family:var(--font-mono); font-size:.85rem; color:var(--text);
+  transition:transform .3s var(--ease), border-color .3s, background .3s; }
+.ai-tool .ai-logo{ width:19px; height:19px; flex-shrink:0;
+  transition:transform .4s var(--ease); }
+.ai-tool:hover{ transform:translateY(-4px); border-color:var(--border-2); background:var(--surface-2); }
+.ai-tool:hover .ai-logo{ transform:scale(1.14); }
 
 /* ---------- work / projects ---------- */
 .project{ display:grid; grid-template-columns:1.05fr .95fr; gap:50px; align-items:center;
