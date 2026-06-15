@@ -71,6 +71,24 @@ a{ color:inherit; text-decoration:none; }
 @keyframes float2{ 50%{ transform:translate(-70px,40px) scale(1.15);} }
 @keyframes float3{ 50%{ transform:translate(50px,-50px) scale(1.05);} }
 
+/* ---------- drifting clouds ---------- */
+.clouds{ position:fixed; inset:0; z-index:-2; pointer-events:none; overflow:hidden; }
+.cloud{ position:absolute; left:0; font-size:16px; width:7.5em; height:2.5em;
+  border-radius:6.25em; background:#fff; filter:blur(.18em); opacity:.75;
+  will-change:transform; animation:drift linear infinite;
+  box-shadow:0 .5em 1.4em rgba(120,160,220,.18); }
+.cloud::before, .cloud::after{ content:''; position:absolute; background:#fff; border-radius:50%; }
+.cloud::before{ width:3.6em; height:3.6em; top:-1.55em; left:1.1em; }
+.cloud::after{ width:2.7em; height:2.7em; top:-1em; right:1.3em; }
+@keyframes drift{ from{ transform:translateX(-260px); } to{ transform:translateX(calc(100vw + 280px)); } }
+
+.cloud-1{ top:10vh; font-size:22px; opacity:.85; animation-duration:75s;  animation-delay:-5s;  }
+.cloud-2{ top:22vh; font-size:15px; opacity:.6;  animation-duration:98s;  animation-delay:-45s; }
+.cloud-3{ top:36vh; font-size:30px; opacity:.7;  animation-duration:62s;  animation-delay:-20s; }
+.cloud-4{ top:52vh; font-size:18px; opacity:.6;  animation-duration:110s; animation-delay:-70s; }
+.cloud-5{ top:68vh; font-size:26px; opacity:.78; animation-duration:84s;  animation-delay:-12s; }
+.cloud-6{ top:82vh; font-size:13px; opacity:.5;  animation-duration:125s; animation-delay:-95s; }
+
 /* ---------- cursor glow ---------- */
 .cursor-glow{
   position:fixed; top:0; left:0; width:480px; height:480px; z-index:-1;
@@ -514,4 +532,5 @@ a{ color:inherit; text-decoration:none; }
   .hero-name .word{ transform:none; }
   .intro{ display:none !important; }
   .marquee-track{ animation:none !important; }
+  .clouds{ display:none !important; }
 }
