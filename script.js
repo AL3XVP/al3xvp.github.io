@@ -292,7 +292,7 @@
     if (!canvas || prefersReduced) return;
     const ctx = canvas.getContext('2d');
     let w, h, pts, raf;
-    const palette = ['255,106,61', '255,160,40', '247,65,30', '255,200,61'];
+    const palette = ['43,123,255', '56,189,248', '120,170,255', '255,255,255'];
     const COUNT = () => Math.min(64, Math.floor(window.innerWidth / 22));
 
     function resize() {
@@ -310,7 +310,7 @@
         flick: Math.random() * 0.03 + 0.012,
         sway: Math.random() * 0.4 + 0.15,
         color: palette[(Math.random() * palette.length) | 0],
-        alpha: Math.random() * 0.45 + 0.3,
+        alpha: Math.random() * 0.32 + 0.12,
       };
     }
     function init() {
@@ -323,7 +323,7 @@
     }
     function draw() {
       ctx.clearRect(0, 0, w, h);
-      ctx.globalCompositeOperation = 'lighter';
+      ctx.globalCompositeOperation = 'source-over';
       for (const p of pts) {
         p.y += p.vy;
         p.phase += p.flick;
