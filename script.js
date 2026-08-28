@@ -56,23 +56,8 @@
     })();
   }
 
-  /* ---------- title (types once, then holds) — started after the intro ---------- */
-  function startTitle() {
-    const title = 'Full-Stack Developer';
-    const twEl = document.getElementById('typewriter');
-    if (!twEl) return;
-    if (prefersReduced) { twEl.textContent = title; return; }
-    let c = 0;
-    const tick = () => {
-      twEl.textContent = title.slice(0, c);
-      if (c < title.length) { c++; setTimeout(tick, 75); }
-    };
-    tick();
-  }
-
   // Kick off the hero once the intro clears (or immediately if there's no intro).
   function startSite() {
-    startTitle();
     const home = document.getElementById('home');
     if (home) playReveals(home);
   }
