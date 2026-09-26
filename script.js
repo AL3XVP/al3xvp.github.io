@@ -222,7 +222,7 @@
 
   /* ---------- scroll-reactive hero (parallax + zoom-out) ---------- */
   const heroInner = document.querySelector('.hero-inner');
-  const heroCanvas = document.getElementById('particles');
+  const heroCanvas = document.getElementById('energyCore');
   const scrollHint = document.querySelector('.scroll-hint');
   if (heroInner && !prefersReduced) {
     let ticking = false;
@@ -233,7 +233,7 @@
         const p = y / vh;
         heroInner.style.transform = `translateY(${y * 0.3}px) scale(${1 - p * 0.08})`;
         heroInner.style.opacity = String(Math.max(0, 1 - p * 1.35));
-        if (heroCanvas) heroCanvas.style.transform = `translateY(${y * 0.5}px)`;
+        if (heroCanvas) heroCanvas.style.transform = `translateY(${y * 0.35}px)`;
         if (scrollHint) scrollHint.style.opacity = String(Math.max(0, 1 - p * 3));
       }
       ticking = false;
@@ -269,71 +269,6 @@
         qr.appendChild(cell);
       }
     }
-  })();
-
-  /* ---------- rising embers (hero) ---------- */
-  (function embers() {
-    const canvas = document.getElementById('particles');
-    if (!canvas || prefersReduced) return;
-    const ctx = canvas.getContext('2d');
-    let w, h, pts, raf;
-    const palette = ['43,123,255', '56,189,248', '120,170,255', '255,255,255'];
-    const COUNT = () => Math.min(64, Math.floor(window.innerWidth / 22));
-
-    function resize() {
-      const hero = canvas.parentElement;
-      w = canvas.width = hero.offsetWidth;
-      h = canvas.height = hero.offsetHeight;
-    }
-    function spawn() {
-      return {
-        x: Math.random() * w,
-        y: h + Math.random() * 40,
-        r: Math.random() * 1.8 + 0.8,
-        vy: -(Math.random() * 0.5 + 0.18),
-        phase: Math.random() * Math.PI * 2,
-        flick: Math.random() * 0.03 + 0.012,
-        sway: Math.random() * 0.4 + 0.15,
-        color: palette[(Math.random() * palette.length) | 0],
-        alpha: Math.random() * 0.32 + 0.12,
-      };
-    }
-    function init() {
-      resize();
-      pts = Array.from({ length: COUNT() }, () => {
-        const p = spawn();
-        p.y = Math.random() * h; // spread across the hero on first frame
-        return p;
-      });
-    }
-    function draw() {
-      ctx.clearRect(0, 0, w, h);
-      ctx.globalCompositeOperation = 'source-over';
-      for (const p of pts) {
-        p.y += p.vy;
-        p.phase += p.flick;
-        p.x += Math.sin(p.phase) * p.sway;
-        const a = p.alpha * (0.55 + 0.45 * Math.sin(p.phase * 2));
-        const rad = p.r * 4;
-        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, rad);
-        g.addColorStop(0, `rgba(${p.color},${a})`);
-        g.addColorStop(1, `rgba(${p.color},0)`);
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, rad, 0, Math.PI * 2);
-        ctx.fill();
-        if (p.y < -12) Object.assign(p, spawn());
-      }
-      ctx.globalCompositeOperation = 'source-over';
-      raf = requestAnimationFrame(draw);
-    }
-    init();
-    draw();
-    let t;
-    window.addEventListener('resize', () => {
-      clearTimeout(t);
-      t = setTimeout(() => { cancelAnimationFrame(raf); init(); draw(); }, 200);
-    });
   })();
 
   /* ---------- copy-to-clipboard cards ---------- */

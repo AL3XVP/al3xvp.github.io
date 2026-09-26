@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Alexander Phan — Computer Science</title>
 <meta name="description" content="Alexander Phan — Bachelor of Science in Computer Science at UMass Boston, building thoughtful, accessible web apps." />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%231d4ed8'/><stop offset='.55' stop-color='%232b8fff'/><stop offset='1' stop-color='%234fd0f5'/></linearGradient></defs><rect width='48' height='48' rx='13' fill='url(%23g)'/><rect width='48' height='23' rx='13' fill='white' opacity='.22'/><text x='24' y='32' font-family='Arial,sans-serif' font-weight='bold' font-size='21' letter-spacing='-1' fill='white' text-anchor='middle'>AP</text></svg>" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23ff6a00'/><stop offset='.55' stop-color='%23ff8f10'/><stop offset='1' stop-color='%23ffc24a'/></linearGradient></defs><rect width='48' height='48' rx='13' fill='url(%23g)'/><rect width='48' height='23' rx='13' fill='white' opacity='.22'/><text x='24' y='32' font-family='Arial,sans-serif' font-weight='bold' font-size='21' letter-spacing='-1' fill='white' text-anchor='middle'>AP</text></svg>" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,9 +19,9 @@
 <svg width="0" height="0" class="svg-sprite" aria-hidden="true" focusable="false">
   <defs>
     <linearGradient id="ap-grad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1d4ed8"/>
-      <stop offset="0.5" stop-color="#2b8fff"/>
-      <stop offset="1" stop-color="#4fd0f5"/>
+      <stop offset="0" stop-color="#ff5a00"/>
+      <stop offset="0.5" stop-color="#ff8f10"/>
+      <stop offset="1" stop-color="#ffc24a"/>
     </linearGradient>
     <linearGradient id="ap-gloss" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/>
@@ -60,14 +60,6 @@
 <div class="bg-orb orb-1" aria-hidden="true"></div>
 <div class="bg-orb orb-2" aria-hidden="true"></div>
 <div class="bg-orb orb-3" aria-hidden="true"></div>
-<div class="clouds" aria-hidden="true">
-  <div class="cloud cloud-1"></div>
-  <div class="cloud cloud-2"></div>
-  <div class="cloud cloud-3"></div>
-  <div class="cloud cloud-4"></div>
-  <div class="cloud cloud-5"></div>
-  <div class="cloud cloud-6"></div>
-</div>
 <div class="cursor-glow" aria-hidden="true"></div>
 <div class="scroll-progress" aria-hidden="true"><span></span></div>
 <div class="page-curtain" aria-hidden="true"><span class="curtain-label"></span></div>
@@ -116,7 +108,7 @@
 
 <!-- ===================== HOME / HERO ===================== -->
 <section id="home" class="hero">
-  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="energy-core" id="energyCore" aria-hidden="true"></div>
   <div class="hero-inner container">
     <h1 class="hero-name">
       <span class="line"><span class="word">Alexander</span></span>
@@ -230,7 +222,7 @@
         <span class="stat-label">Languages</span>
       </div>
       <div class="stat">
-        <span class="stat-num" data-count="2">0</span>
+        <span class="stat-num" data-count="3">0</span>
         <span class="stat-label">Featured Projects</span>
       </div>
     </div>
@@ -415,6 +407,60 @@
         </div>
       </div>
     </article>
+
+    <!-- PROJECT 3: Recallo -->
+    <article class="project reveal">
+      <div class="project-preview">
+        <div class="browser">
+          <div class="browser-bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="browser-url">recallo/maternity</span>
+          </div>
+          <div class="browser-body mock-rec">
+            <div class="rec-top">
+              <span class="rec-logo">Recallo</span>
+              <span class="rec-subjects"><i>Mental Health</i><i class="on">Maternity</i></span>
+            </div>
+            <div class="rec-tabs"><i>Mod 4</i><i class="on">Mod 5</i><i>Mod 6</i><i>Mod 7</i><i class="mock">Mock Exam</i></div>
+            <div class="rec-card">
+              <span class="rec-tape" aria-hidden="true"></span>
+              <div class="rec-meta"><span class="rec-tag">ASSESSMENT</span><span class="rec-hearts">♥♥<b>♥</b></span></div>
+              <div class="rec-q"><span class="w90"></span><span class="w70"></span></div>
+              <div class="rec-rule"></div>
+              <div class="rec-q dim"><span class="w40"></span></div>
+            </div>
+            <div class="rec-actions">
+              <span class="rec-btn">Again</span>
+              <span class="rec-progress"><i></i></span>
+              <span class="rec-btn on">Got it ✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <span class="project-kicker">Featured Project</span>
+        <h3 class="project-title">Recallo — Nursing Study Deck</h3>
+        <p class="project-desc">
+          A flashcard and exam-prep app built for nursing students. It packs 900+
+          cards and 1,000+ NCLEX-style questions across mental health and maternity
+          courses, schedules reviews with spaced repetition, and builds a fresh
+          mock exam on demand — then writes up what you're strong in and what to
+          work on next.
+        </p>
+        <ul class="project-feats">
+          <li>Spaced-repetition flashcards with swipe gestures and installable, offline-ready phone support</li>
+          <li>Goes beyond multiple choice with select-all, ordering, and case-study questions</li>
+          <li>Interactive study notes with highlighting and sticky notes, plus auto-generated PDF study guides</li>
+        </ul>
+        <ul class="tech-tags">
+          <li>JavaScript</li><li>HTML / CSS</li><li>Python</li><li>Service Worker (PWA)</li><li>Vercel</li>
+        </ul>
+        <div class="project-status">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm3 8H9V6a3 3 0 0 1 6 0v3z"/></svg>
+          Private project — code &amp; demo available on request
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -488,5 +534,21 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="script.js"></script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+  import { createEnergyCore } from './energy-core.js';
+  const el = document.getElementById('energyCore');
+  try {
+    window.energyCore = createEnergyCore(el, { offsetX: 0.2, offsetMinWidth: 760, portraitOffsetY: 0.29 });
+  } catch (err) {
+    el.classList.add('no-webgl'); // CSS glow fallback
+    console.warn('Energy core unavailable:', err);
+  }
+</script>
 </body>
 </html>
