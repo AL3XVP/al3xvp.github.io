@@ -27,6 +27,21 @@
     a.addEventListener('click', () => toggleMenu(false))
   );
 
+  /* ---------- fade sections in once as they scroll into view ---------- */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    reveals.forEach((el) => revealObserver.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('in-view'));
+  }
+
   /* ---------- scroll spy (active nav link) ---------- */
   const navLinks = document.querySelectorAll('.nav-link');
   const spy = new IntersectionObserver((entries) => {

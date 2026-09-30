@@ -9,8 +9,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -78,11 +79,11 @@
 <!-- ===================== ABOUT ===================== -->
 <section id="about" class="section">
   <div class="container">
-    <h2 class="section-title">About</h2>
+    <h2 class="section-title reveal">About</h2>
 
-    <div class="about-grid">
+    <div class="about-grid reveal">
       <div class="about-bio">
-        <p>
+        <p class="lead">
           I'm working toward a B.S. in Computer Science at the University of
           Massachusetts Boston, graduating in May 2027. I live in Cambridge, MA,
           and speak English and Vietnamese.
@@ -91,9 +92,6 @@
           My coursework covers the fundamentals: data structures and algorithms,
           computer architecture, compilers, and operating systems. Outside of class
           I build full-stack web apps, mostly with Next.js, React, and TypeScript.
-        </p>
-        <p>
-          I'm open to internships, entry-level roles, and project collaborations.
         </p>
       </div>
 
@@ -109,19 +107,19 @@
       </dl>
     </div>
 
-    <h3 class="sub-title">Skills</h3>
-    <dl class="skills">
+    <h3 class="sub-title reveal">Skills</h3>
+    <dl class="skills reveal">
       <div>
         <dt>Proficient</dt>
-        <dd>Python, Java, JavaScript, C, C++, C#, HTML, CSS, Git, GitHub, VS Code</dd>
+        <dd><ul class="chips"><li>Python</li><li>Java</li><li>JavaScript</li><li>C</li><li>C++</li><li>C#</li><li>HTML</li><li>CSS</li><li>Git</li><li>GitHub</li><li>VS Code</li></ul></dd>
       </div>
       <div>
         <dt>Familiar</dt>
-        <dd>TypeScript, React, Next.js, Node.js, Tailwind CSS</dd>
+        <dd><ul class="chips"><li>TypeScript</li><li>React</li><li>Next.js</li><li>Node.js</li><li>Tailwind CSS</li></ul></dd>
       </div>
       <div>
         <dt>AI tools</dt>
-        <dd>Claude, ChatGPT, Gemini, NotebookLM</dd>
+        <dd><ul class="chips"><li>Claude</li><li>ChatGPT</li><li>Gemini</li><li>NotebookLM</li></ul></dd>
       </div>
     </dl>
   </div>
@@ -130,10 +128,10 @@
 <!-- ===================== WORK ===================== -->
 <section id="work" class="section">
   <div class="container">
-    <h2 class="section-title">Projects</h2>
+    <h2 class="section-title reveal">Projects</h2>
 
     <!-- PROJECT 1: SSS Web -->
-    <article class="project">
+    <article class="project reveal" style="--glow:91,140,255">
       <div class="project-preview">
         <div class="browser">
           <div class="browser-bar">
@@ -169,7 +167,7 @@
     </article>
 
     <!-- PROJECT 2: Attendance App -->
-    <article class="project">
+    <article class="project project-flip reveal" style="--glow:94,233,166">
       <div class="project-preview">
         <div class="browser">
           <div class="browser-bar">
@@ -210,7 +208,7 @@
     </article>
 
     <!-- PROJECT 3: Recallo -->
-    <article class="project">
+    <article class="project reveal" style="--glow:244,143,184">
       <div class="project-preview">
         <div class="browser">
           <div class="browser-bar">
@@ -258,17 +256,19 @@
 </section>
 
 <!-- ===================== CONTACT ===================== -->
-<section id="contact" class="section">
+<section id="contact" class="section section-contact">
   <div class="container">
-    <h2 class="section-title">Contact</h2>
-    <p class="contact-copy">Email is the fastest way to reach me.</p>
-    <ul class="contact-list">
-      <li><span>Email</span><a href="mailto:aalexanderphan@gmail.com">aalexanderphan@gmail.com</a></li>
-      <li><span>LinkedIn</span><a href="https://linkedin.com/in/alexandervphan" target="_blank" rel="noopener">linkedin.com/in/alexandervphan</a></li>
-      <li><span>GitHub</span><a href="https://github.com/AL3XVP" target="_blank" rel="noopener">github.com/AL3XVP</a></li>
-      <li><span>Resume</span><a href="Alexander_Phan_Resume.pdf" target="_blank" rel="noopener">Alexander_Phan_Resume.pdf</a></li>
-      <li><span>Location</span>Cambridge, MA</li>
-    </ul>
+    <h2 class="section-title reveal">Contact</h2>
+    <div class="contact-block reveal">
+      <p class="contact-copy">Open to internships, entry-level roles, and project collaborations. Email is the fastest way to reach me.</p>
+      <a class="contact-email" href="mailto:aalexanderphan@gmail.com">aalexanderphan@gmail.com</a>
+      <ul class="contact-links">
+        <li><a href="https://linkedin.com/in/alexandervphan" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://github.com/AL3XVP" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></li>
+        <li><a href="Alexander_Phan_Resume.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↗</span></a></li>
+        <li class="contact-loc">Cambridge, MA</li>
+      </ul>
+    </div>
   </div>
 </section>
 
